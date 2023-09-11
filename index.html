@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | News homepage</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+      main {
+        width: 100%;
+        height: 100vh;
+        background-color: hsl(36, 100%, 99%);
+      }
+      main header {
+        display: flex;
+        justify-content: space-between;
+        padding: 60px;
+      }
+      main header img {
+        width: 70px;
+        cursor: pointer;
+      }
+      main header ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      main header ul li {
+        text-decoration: none;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-left: 30px;
+        cursor: pointer;
+        font-weight: 200;
+      }
+
+      .header-menu {
+        display: none;
+      }
+      li:nth-child(1) {
+        display: none;
+      }
+      .row {
+        display: flex;
+        flex-direction: row;
+        padding: 0 57px;
+        justify-content: space-evenly;
+        position: relative;
+      }
+      .row .img-content {
+        display: flex;
+
+        flex: 60%;
+
+        background-image: url("./assets/images/image-web-3-desktop.jpg");
+        height: 278px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+      }
+
+      .row .img-maincontent {
+        display: flex;
+        position: absolute;
+        top: 20rem;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        padding: 0 53px;
+      }
+      .row .img-maincontent .img-content-text-heading {
+        width: 25%;
+        font-size: 30px;
+        font-weight: 900;
+      }
+      .row .img-maincontent .img-content-text-para {
+        text-align: start;
+        width: 28%;
+        font-size: 18px;
+        font-weight: 200;
+        color: #686868;
+      }
+      .row .img-maincontent .btn {
+        margin-top: 50px;
+      }
+      .row .img-maincontent a {
+        margin-top: 10px;
+        text-decoration: none;
+        background-color: hsl(5, 85%, 63%);
+        padding: 15px;
+        color: #fff;
+        letter-spacing: 5px;
+      }
+
+      .row .card-content .card {
+        display: flex;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin-left: 35px;
+        width: 90%;
+        height: 100%;
+        background-color: hsl(240, 100%, 5%);
+        color: hsl(36, 100%, 99%);
+        padding-left: 20px;
+        padding-top: 30px;
+        padding-bottom: 40px;
+      }
+      hr {
+        width: 90%;
+      }
+      .row .card-content .card .card-main-content .new-heading {
+        font-size: 35px;
+        font-weight: 800;
+        color: hsl(35, 77%, 62%);
+      }
+
+      .row .card-content .card .card-main-content h1 {
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      hr {
+        margin-top: 50px;
+        color: hsl(36, 100%, 99%);
+      }
+      .row .card-content .card .card-main-content h2 {
+        margin-top: 30px;
+        margin-bottom: 5px;
+        color: #fff;
+      }
+      .row .card-content .card .card-main-content p {
+        width: 90%;
+        color: hsl(36, 100%, 99%);
+      }
+
+      .row .footer-card {
+        display: flex;
+      }
+
+      .row .footer-card .footer-content {
+        display: flex;
+        flex-direction: row;
+        margin-top: 5rem;
+        margin-left: 2rem;
+      }
+      .row .footer-card .footer-content img {
+        flex: 1;
+        max-width: 80%;
+      }
+
+      .row .footer-card .footer-content .text-content {
+        flex: 1;
+      }
+      .row .footer-card .footer-content .text-content h1 {
+        color: hsl(60, 5%, 80%);
+        font-size: 33px;
+        font-weight: 900;
+      }
+
+      .row .footer-card .footer-content .text-content h2 {
+        font-weight: 900;
+      }
+
+      .row .footer-card .footer-content .text-content p {
+        font-size: 15px;
+        font-weight: 200;
+      }
+
+      .row .footer-card .footer-content:nth-child(1) {
+        margin-left: 0;
+      }
+
+      @media (min-width: 1440px) {
+        li:nth-child(1) {
+          display: none;
+        }
+      }
+
+      @media (max-width: 375px) {
+        main header {
+          padding: 0;
+        }
+        main header img {
+          width: 50px;
+          margin-top: 20px;
+        }
+        main header ul {
+          width: 15rem;
+          background-color: #fff;
+          height: 100vh;
+          position: fixed;
+          top: 0;
+          right: -15rem; /* Hide the menu by default */
+          z-index: 1;
+          transition: right 0.3s ease; /* Add a transition for smooth sliding */
+        }
+        .header-menu {
+          display: flex;
+          justify-content: end;
+          align-items: end;
+          width: 20px;
+          display: flex;
+          justify-content: center;
+          margin-top: 10px;
+        }
+        .header-list li {
+          position: absolute; /* Position list items absolutely */
+          left: 0; /* Position to the left edge of the <ul> */
+          margin-top: 6rem;
+        }
+        li:nth-child(1) {
+          display: flex;
+          margin-top: 10px;
+          width: 20px;
+          left: 150px;
+          padding: 0;
+        }
+        li:nth-child(2) {
+          top: 40px; /* Position the second list item 40px from the top of the <ul> */
+          padding: 0;
+        }
+
+        li:nth-child(3) {
+          top: 80px; /* Position the third list item 80px from the top of the <ul> */
+          padding: 0;
+        }
+        li:nth-child(4) {
+          top: 120px; /* Position the third list item 80px from the top of the <ul> */
+          padding: 0;
+        }
+        li:nth-child(5) {
+          top: 160px; /* Position the third list item 80px from the top of the <ul> */
+          padding: 0;
+        }
+        li:nth-child(6) {
+          top: 200px; /* Position the third list item 80px from the top of the <ul> */
+          padding: 0;
+        }
+        main header ul li {
+          align-self: flex-start; /* Align items to the start (left) */
+          padding: 10px;
+
+          margin-bottom: 10px;
+          padding: 0;
+        }
+        .row {
+          display: flex;
+          padding: 20px;
+          flex-wrap: wrap;
+        }
+        .row .img-content {
+          width: 100%;
+
+          background-image: url("./assets/images/image-web-3-mobile.jpg");
+
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+        .row .img-maincontent {
+          display: block;
+          position: relative;
+          margin: 0;
+          padding: 0;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin-top: 25px;
+        }
+        .row .img-maincontent .img-content-text-heading {
+          width: 100%;
+          font-size: 28px;
+          font-weight: 900;
+        }
+        .row .img-maincontent .img-content-text-para {
+          text-align: start;
+          width: 100%;
+          margin-top: 10px;
+          font-size: 15px;
+          font-weight: 200;
+          color: #686868;
+        }
+        .row .img-maincontent .btn {
+          margin-top: 20px;
+        }
+        .row .img-maincontent a {
+          text-decoration: none;
+          background-color: hsl(5, 85%, 63%);
+          padding: 8px;
+          color: #fff;
+          letter-spacing: 5px;
+        }
+
+        .row .card-content .card {
+          margin-top: 50px;
+          display: flex;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          margin-left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: hsl(240, 100%, 5%);
+          color: hsl(36, 100%, 99%);
+          padding-left: 20px;
+          padding-top: 30px;
+          padding-bottom: 40px;
+        }
+        hr {
+          width: 90%;
+        }
+        .row .card-content .card .card-main-content .new-heading {
+          font-size: 30px;
+          font-weight: 800;
+          color: hsl(35, 77%, 62%);
+        }
+
+        .row .card-content .card .card-main-content h1 {
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+        hr {
+          margin-top: 50px;
+          color: hsl(36, 100%, 99%);
+        }
+        .row .card-content .card .card-main-content h2 {
+          font-size: 20px;
+          margin-top: 30px;
+          margin-bottom: 5px;
+          color: #fff;
+        }
+        .row .card-content .card .card-main-content p {
+          width: 90%;
+          color: hsl(36, 100%, 99%);
+        }
+        .row .footer-card {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .row .footer-card .footer-content {
+          display: flex;
+          flex-direction: row;
+          margin-top: 5rem;
+          margin-left: 0rem;
+          width: 100%;
+        }
+        .row .footer-card .footer-content img {
+          flex: 1;
+          max-width: 80%;
+        }
+
+        .row .footer-card .footer-content .text-content {
+          flex: 1;
+        }
+        .row .footer-card .footer-content .text-content h1 {
+          color: hsl(60, 5%, 80%);
+          font-size: 33px;
+          font-weight: 900;
+        }
+
+        .row .footer-card .footer-content .text-content h2 {
+          font-weight: 900;
+        }
+
+        .row .footer-card .footer-content .text-content p {
+          font-size: 15px;
+          font-weight: 200;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="header-logo">
+          <img src="./assets/images/logo.svg" onclick="openNav()" />
+        </div>
+        <div class="header-list">
+          <div class="header-menu" onclick="toggleNav()">
+            <img src="./assets/images/icon-menu.svg" />
+          </div>
+          <ul id="mySidenav">
+            <!-- This is the correct ID -->
+            <li>
+              <img
+                src="./assets/images/icon-menu-close.svg"
+                onclick="closeNav()"
+              />
+            </li>
+            <li>Home</li>
+            <li>New</li>
+            <li>Popular</li>
+            <li>Trending</li>
+            <li>Categories</li>
+          </ul>
+        </div>
+      </header>
+      <section>
+        <div class="row">
+          <div class="img-content"></div>
+          <div class="img-maincontent">
+            <div class="img-content-text-heading">
+              <h1>The Bright Future of Web 3.0?</h1>
+            </div>
+            <div class="img-content-text-para">
+              <p>
+                We dive into the next evolution of the web that claims to put
+                the power of the platforms back into the hands of the people.
+                But is it really fulfilling its promise?
+              </p>
+              <div class="btn">
+                <a href="#">Read more</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card">
+              <div class="card-main-content">
+                <h1 class="new-heading">New</h1>
+                <h2 class="mt-heading">New Hydrogen VS Electric Cars</h2>
+                <p>Will hydrogenfueled cars ever catch up to EVs?</p>
+                <hr />
+                <h2 class="mt-heading">The Downsides of AI Artistry</h2>
+                <p>
+                  What are the possible adverse effects of on-demand AI image
+                  generation?
+                </p>
+                <hr />
+                <h2 class="mt-heading">Is VC Funding Drying Up?</h2>
+                <p>
+                  Private funding by VC firms is down 50% YOY. We take a look at
+                  what that means.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="row">
+          <div class="footer-card">
+            <div class="footer-content">
+              <div class="footer-img">
+                <img src="./assets/images/image-retro-pcs.jpg" alt="" />
+              </div>
+              <div class="text-content">
+                <h1>01</h1>
+                <h2>Reviving Retro PCs</h2>
+                <p>What happens when old PCs are given modern upgrades?</p>
+              </div>
+            </div>
+            <div class="footer-content">
+              <div class="footer-img">
+                <img src="./assets/images/image-top-laptops.jpg" alt="" />
+              </div>
+              <div class="text-content">
+                <h1>02</h1>
+                <h2>Top 10 Laptops of 2022</h2>
+                <p>Our best picks for various needs and budgets.</p>
+              </div>
+            </div>
+            <div class="footer-content">
+              <div class="footer-img">
+                <img src="./assets/images/image-gaming-growth.jpg" alt="" />
+              </div>
+              <div class="text-content">
+                <h1>03</h1>
+                <h2>The Growth of Gaming</h2>
+                <p>How the pandemic has sparked fresh opportunities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function openNav() {
+        console.log("openNav() called");
+        document.getElementById("mySidenav").style.right = "0";
+      }
+
+      function closeNav() {
+        console.log("closeNav() called");
+        document.getElementById("mySidenav").style.right = "-15rem"; // Adjust the width as needed
+      }
+
+      function toggleNav() {
+        console.log("toggleNav() called");
+        var sideNav = document.getElementById("mySidenav");
+        if (sideNav.style.right === "0px" || sideNav.style.right === "") {
+          closeNav();
+        } else {
+          openNav();
+        }
+      }
+    </script>
+  </body>
+</html>
